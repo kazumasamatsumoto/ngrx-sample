@@ -1,0 +1,71 @@
+<div class="filter-container">
+  <h2>フィルター設定</h2>
+
+  <div class="filters-wrapper">
+    <div class="filter-group">
+      <label for="countries">国（複数選択可）:</label>
+      <select
+        id="countries"
+        multiple
+        size="5"
+        (change)="onCountriesChange($event)"
+        [value]="(selectedCountries$ | async) || []">
+        <option *ngFor="let country of countryOptions" [value]="country.id">
+          {{ country.name }}
+        </option>
+      </select>
+      <div class="selected-values">
+        選択中: {{ (selectedCountries$ | async)?.join(', ') || 'なし' }}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label for="regions">地域（複数選択可）:</label>
+      <select
+        id="regions"
+        multiple
+        size="5"
+        (change)="onRegionsChange($event)"
+        [value]="(selectedRegions$ | async) || []">
+        <option *ngFor="let region of regionOptions" [value]="region.id">
+          {{ region.name }}
+        </option>
+      </select>
+      <div class="selected-values">
+        選択中: {{ (selectedRegions$ | async)?.join(', ') || 'なし' }}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label for="organizations">組織（複数選択可）:</label>
+      <select
+        id="organizations"
+        multiple
+        size="5"
+        (change)="onOrganizationsChange($event)"
+        [value]="(selectedOrganizations$ | async) || []">
+        <option *ngFor="let org of organizationOptions" [value]="org.id">
+          {{ org.name }}
+        </option>
+      </select>
+      <div class="selected-values">
+        選択中: {{ (selectedOrganizations$ | async)?.join(', ') || 'なし' }}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label for="serialNumber">シリアルナンバー:</label>
+      <input
+        id="serialNumber"
+        type="number"
+        [value]="(serialNumber$ | async) ?? ''"
+        (input)="onSerialNumberChange($any($event.target).value)"
+        placeholder="数値を入力">
+      <div class="selected-values">
+        現在の値: {{ (serialNumber$ | async) ?? '未設定' }}
+      </div>
+    </div>
+  </div>
+
+  <button (click)="resetFilters()" class="reset-button">フィルターをリセット</button>
+</div>
