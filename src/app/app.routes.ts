@@ -6,6 +6,7 @@ import { Page4Component } from './pages/page4.component';
 import { Page5Component } from './pages/page5.component';
 import { SharedListComponent } from './pages/shared-list.component';
 import { RegisterComponent } from './pages/register.component';
+import { IframePipelineComponent } from './pages/iframe-pipeline.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/page1', pathMatch: 'full' },
@@ -26,6 +27,7 @@ export const routes: Routes = [
   // async pipe / subscribe で常に最新タイトルを受け取れる。
   // ─────────────────────────────────────────────────────────────────
   { path: 'register',         component: RegisterComponent },
+  { path: 'iframe-pipeline',  component: IframePipelineComponent },
   { path: 'shared/sales',     component: SharedListComponent, data: { title: '売上一覧',   path: 'shared/sales' } },
   { path: 'shared/inventory', component: SharedListComponent, data: { title: '在庫一覧',   path: 'shared/inventory' } },
   { path: 'shared/report',    component: SharedListComponent, data: { title: 'レポート一覧', path: 'shared/report' } },

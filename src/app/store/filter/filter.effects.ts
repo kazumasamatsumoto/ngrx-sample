@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
@@ -14,6 +14,12 @@ import { FilterApiService } from '../../services/filter-api.service';
 
 @Injectable()
 export class FilterEffects {
+
+  // inject() はコンストラクタと同じタイミングで実行されるため
+  // フィールド宣言の順序に関係なく DI が保証される
+  private actions$         = inject(Actions);
+  private store            = inject(Store);
+  private filterApiService = inject(FilterApiService);
 
   /**
    * フィルター設定の読み込み
@@ -53,10 +59,4 @@ export class FilterEffects {
       })
     )
   );
-
-  constructor(
-    private actions$: Actions,
-    private store: Store,
-    private filterApiService: FilterApiService
-  ) {}
 }

@@ -1,1 +1,29 @@
-<router-outlet />
+<nav class="global-nav">
+  <span class="nav-title">学習プロジェクト</span>
+
+  <div class="nav-group">
+    <span class="nav-group-label">NgRx 基本</span>
+    <a routerLink="/page1" routerLinkActive="active">Page1（フィルターUI）</a>
+    <a routerLink="/page2" routerLinkActive="active">Page2（値の維持確認）</a>
+    <a routerLink="/page3" routerLinkActive="active">Page3（遷移後も維持）</a>
+    <a routerLink="/page4" routerLinkActive="active">Page4（リロードで揮発）</a>
+    <a routerLink="/page5" routerLinkActive="active">Page5（動作確認手順）</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-group-label">NgRx × ルーティング</span>
+    <a routerLink="/register" routerLinkActive="active">Store登録</a>
+    <a routerLink="/shared/sales" routerLinkActive="active">売上一覧</a>
+    <a routerLink="/shared/inventory" routerLinkActive="active">在庫一覧</a>
+    <a routerLink="/shared/report" routerLinkActive="active">レポート一覧</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-group-label">RxJS</span>
+    <a routerLink="/iframe-pipeline" routerLinkActive="active">非同期パイプライン</a>
+  </div>
+</nav>
+
+<main>
+  <router-outlet />
+</main>
